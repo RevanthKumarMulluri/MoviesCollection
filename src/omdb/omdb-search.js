@@ -22,11 +22,12 @@ const OMDBSearch = ()=> {
                     console.log(res);
                 }).catch(e => {
                     console.log(e);
-                })
+                });
+            setName('');
+            setState(false);
         }else {
            return;
         }
-       setState(false);
     }
 
      // On click outside, change input state to false
