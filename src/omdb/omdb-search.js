@@ -30,21 +30,21 @@ const OMDBSearch = ()=> {
         }
     }
 
-     // On click outside, change input state to false
-  const handleClick = e => {
-    if (node.current.contains(e.target)) {
-      // inside click
-      return;
-    }
-    // outside click
-    setState(false);
-  };
+    // On click outside, change input state to false
+    const handleClick = e => {
+        if (node.current.contains(e.target)) {
+        // inside click
+        return;
+        }
+        // outside click
+        setState(false);
+    };
 
     useEffect(() => {
         if(state){
-            node.current.style.width='600px';
+            node.current.style.width='25rem';
         }else{
-            node.current.style.width='30px';
+            node.current.style.width='2.5rem';
         }
         
     },[state]);
