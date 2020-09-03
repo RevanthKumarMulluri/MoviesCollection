@@ -1,0 +1,12 @@
+@import '../utils/colors';
+
+
+.movieslist {
+    margin: 4rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:50px 50px;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -3,13 +3,13 @@
 
 .search_form {
     position: relative;
-    float: right;
     display: flex;
     align-items: center;
     justify-content: center;
     margin : 2rem;
+    margin-left: auto;
     height: 1.8rem;
-    padding: 1rem;
+    padding: 2rem;
     outline: none;
     border-radius: 10rem;
     box-shadow: $shadow-dark;
@@ -45,4 +45,8 @@
         background-color: transparent;
     }
     
+}
+
+.movieslist {
+    position: absolute;
 }

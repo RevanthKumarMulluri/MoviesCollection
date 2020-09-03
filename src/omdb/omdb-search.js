@@ -2,6 +2,7 @@ import React, { useEffect, useState,useRef } from 'react';
 import {omdbAxios} from '../axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import classes from './omdb-search.module.scss';
+import MoviesList from '../movies/movies-list';
 
 
 const OMDBSearch = ()=> {
@@ -9,20 +10,20 @@ const OMDBSearch = ()=> {
     const [state,setState] = useState(false);
     const node = useRef();
     const inputFocus = useRef();
-
+    const [movies,setMovies]=useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if(name != ''){
-            omdbAxios.get('',{
-                params:{
-                 't' :name
+            omdbAxios.get('', {
+                params: {
+                    's': name
                 }
             }).then(res => {
-                    console.log(res);
-                }).catch(e => {
-                    console.log(e);
-                });
+                setMovies(res.data);
+            }).catch(e => {
+                console.log(e);
+            });
             setName('');
             setState(false);
         }else {
@@ -38,6 +39,7 @@ const OMDBSearch = ()=> {
         }
         // outside click
         setState(false);
+        setName('');
     };
 
     useEffect(() => {
@@ -59,10 +61,13 @@ const OMDBSearch = ()=> {
     },[]);
     
     return (
-        <form className={classes.search_form} ref={node} onClick={() => setState(true)} onSubmit={handleSubmit}>
-            <input className={classes.search_form_input} type='text' value={name} placeholder='Search for a movie' ref={inputFocus} name='name' onChange={e => setName(e.target.value)} />
-            <button className={classes.search_form_button} type='submit'><FontAwesomeIcon icon={'search'} size="2x"></FontAwesomeIcon></button>
-        </form>
+        <React.Fragment>
+            <form className={classes.search_form} ref={node} onClick={() => setState(true)} onSubmit={handleSubmit}>
+                <input className={classes.search_form_input} type='text' value={name} placeholder='Search for a movie' ref={inputFocus} name='name' onChange={e => setName(e.target.value)} />
+                <button className={classes.search_form_button} type='submit'><FontAwesomeIcon icon={'search'} size="2x"></FontAwesomeIcon></button>
+            </form>
+            <MoviesList className={classes.movieslist} movies={movies}></MoviesList>
+        </React.Fragment>
     );
 };
 
