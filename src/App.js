@@ -3,10 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import { omdbAxios } from './axios';
 import OMDBSearch from './omdb/omdb-search';
-import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faSearch,faTrashAlt,faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
-library.add(faSearch);
+library.add(faSearch,faTrashAlt,faPlusCircle);
 
 function App() {
 
